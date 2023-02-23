@@ -1,0 +1,80 @@
+.main_section {
+  height: max-content;
+  height: 100vh;
+  overflow: hidden;
+}
+.main_Card {
+  height: 60%;
+  margin: 3% 0% 0% 10%;
+  color: white;
+}
+.search_field {
+  border-radius: 15px;
+  padding-left: 8px;
+  background-color: #3f0997a6;
+  border: 1px solid white;
+  box-shadow: 2px 2px 10px white;
+  height: 32px;
+  margin: 0px;
+  color: white;
+  font-family: "Roboto", sans-serif;
+}
+
+.country_text {
+  font-size: 25px;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  font-weight: bolder;
+  text-shadow: 2px 2px 4px #000000;
+}
+.city_text {
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bolder;
+  text-shadow: 2px 2px 4px #000000;
+}
+::-webkit-input-placeholder {
+  color: rgb(255, 255, 255);
+  font-family: "Roboto", sans-serif;
+}
+
+.mini_card {
+  margin: 8% 0% 0% 33%;
+  box-shadow: 5px 5px 9px white;
+
+  background-color: #48c0fc;
+  width: max-content;
+}
+.mini_card_body {
+  background-color: #48c0fc;
+  text-align: center;
+  height: 44vh;
+  width: 22vw;
+  border-radius: 4px;
+}
+.weatherTemp {
+  height: 85px;
+  width: 10vw;
+  font-size: 45px;
+  font-weight: bold;
+  margin: 8% 0% 35% 29%;
+}
+
+.windspeed {
+  font-size: medium;
+  color:darkblue;
+  font-weight: bolder;
+  z-index: 1;
+}
+.currentTemp {
+  margin-left: 40px;
+  font-weight: bolder;
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px #000000;
+}
+#icons {
+  color: white;
+  font-weight: bolder;
+  text-shadow: 2px 2px 4px #000000;
+  font-size: larger;
+}

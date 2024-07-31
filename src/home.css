@@ -10,13 +10,15 @@
 }
 .search_field {
   border-radius: 15px;
-  padding-left: 8px;
+  /* padding-left: 8px; */
+  text-align: center;
   background-color: #3f0997a6;
   border: 1px solid white;
   box-shadow: 2px 2px 10px white;
   height: 32px;
-  margin: 0px;
+  margin-left: 15px;
   color: white;
+  font-weight: bold;
   font-family: "Roboto", sans-serif;
 }
 
@@ -77,4 +79,13 @@
   font-weight: bolder;
   text-shadow: 2px 2px 4px #000000;
   font-size: larger;
+}
+
+#search-button{
+  box-shadow: 2px 2px 10px white;
+}
+#search-button:hover{
+  box-shadow: 4px 4px 20px white;
+  color: white;
+  font-weight: bold;
 }

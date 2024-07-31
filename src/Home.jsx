@@ -5,16 +5,18 @@ export default function Home(props) {
   const [data, setdata] = useState([{ temp: "10" }]);
   const [initialval, setinitialval] = useState("Patna");
 
-  useEffect(() => {
-    myfun();
-  }, [initialval]);
+  // useEffect(() => {
+  //   myfun();
+  // });
 
   const myfun = async () => {
     const city = initialval;
-    const url = "https://api.api-ninjas.com/v1/weather?city=" + city;
+    // const url = "https://api.api-ninjas.com/v1/weather?city=" + city;
+    let url =`"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${initialval}?unitGroup=us&key=88H8H6USV9N8GKM5RMAPYRFD6"`;
+    // const responseVal = await fetch(url, {
     const responseVal = await fetch(url, {
       method: "GET",
-      headers: { "X-Api-Key": "EHa0SLC1Zbm5Yw5Ceo4+BQ==pKorQgVGzmcO2SU8" },
+      // headers: { "X-Api-Key": "EHa0SLC1Zbm5Yw5Ceo4+BQ==pKorQgVGzmcO2SU8" },
       contentType: "application/json",
       success: function (result) {
         console.log(result);
@@ -30,15 +32,14 @@ export default function Home(props) {
   };
 
   const getinputdata = (e) => {
-    const saveuserdata = e.target.value;
-    if (saveuserdata === "") {
-      setinitialval("Patna");
-
-      alert("Please enter valid city name");
-    } else {
-      setinitialval(saveuserdata);
-    }
+    setinitialval(e.target.value);
+   
   };
+
+const  searchWeather=()=>{
+ 
+  myfun()
+}
 
   return (
     <div className="main_section">
@@ -62,9 +63,12 @@ export default function Home(props) {
                 <input
                   type="text"
                   className="search_field "
-                  placeholder="Search location"
+                  placeholder=" Location"
                   onChange={getinputdata}
                 />
+                  <button onClick={searchWeather} className="search_field " id="search-button">
+                    Search
+                  </button>
               </div>
             </div>
           </div>

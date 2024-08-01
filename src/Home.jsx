@@ -2,44 +2,66 @@ import React, { useEffect, useState } from "react";
 import "./home.css";
 import { WiCelsius, WiSunrise } from "react-icons/wi";
 export default function Home(props) {
-  const [data, setdata] = useState([{ temp: "10" }]);
+  const [data, setdata] = useState({
+    "last_updated_epoch": 1722550500,
+    "last_updated": "2024-08-02 03:45",
+    "temp_c": 27.9,
+    "temp_f": 82.3,
+    "is_day": 0,
+    "condition": {
+        "text": "Overcast",
+        "icon": "//cdn.weatherapi.com/weather/64x64/night/122.png",
+        "code": 1009
+    },
+    "wind_mph": 15.2,
+    "wind_kph": 24.5,
+    "wind_degree": 78,
+    "wind_dir": "ENE",
+    "pressure_mb": 997,
+    "pressure_in": 29.43,
+    "precip_mm": 0,
+    "precip_in": 0,
+    "humidity": 77,
+    "cloud": 92,
+    "feelslike_c": 31.7,
+    "feelslike_f": 89,
+    "windchill_c": 27.9,
+    "windchill_f": 82.3,
+    "heatindex_c": 31.7,
+    "heatindex_f": 89,
+    "dewpoint_c": 23.5,
+    "dewpoint_f": 74.3,
+    "vis_km": 10,
+    "vis_miles": 6,
+    "uv": 1,
+    "gust_mph": 20.4,
+    "gust_kph": 32.8
+});
   const [initialval, setinitialval] = useState("Patna");
+  // const [data, dsaf] = useState("Patna");
 
-  // useEffect(() => {
-  //   myfun();
+
+  // useEffect(()=> {
+  //   searchWeather()
   // });
 
-  const myfun = async () => {
-    const city = initialval;
-    // const url = "https://api.api-ninjas.com/v1/weather?city=" + city;
-    let url =`"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${initialval}?unitGroup=us&key=88H8H6USV9N8GKM5RMAPYRFD6"`;
-    // const responseVal = await fetch(url, {
-    const responseVal = await fetch(url, {
-      method: "GET",
-      // headers: { "X-Api-Key": "EHa0SLC1Zbm5Yw5Ceo4+BQ==pKorQgVGzmcO2SU8" },
-      contentType: "application/json",
-      success: function (result) {
-        console.log(result);
-      },
-      error: function ajaxError(jqXHR) {
-        console.error("Error: ", jqXHR.responseText);
-      },
-    });
-    const dd = await responseVal.json();
-    setdata(dd);
-    // console.log(dd)
-    console.log(dd);
-  };
+
 
   const getinputdata = (e) => {
     setinitialval(e.target.value);
-   
+
   };
 
-const  searchWeather=()=>{
- 
-  myfun()
-}
+  const searchWeather =async () => {
+
+    // myfun()
+
+    const datavalue =await fetch(`https://api.weatherapi.com/v1/current.json?key=a6bb6be9863446429e3202445240108&q= ${initialval}` )
+    const dataval = await datavalue.json();
+    setdata(dataval?.current)
+    console.log(dataval?.current)
+
+  }
 
   return (
     <div className="main_section">
@@ -66,9 +88,9 @@ const  searchWeather=()=>{
                   placeholder=" Location"
                   onChange={getinputdata}
                 />
-                  <button onClick={searchWeather} className="search_field " id="search-button">
-                    Search
-                  </button>
+                <button onClick={searchWeather} className="search_field " id="search-button">
+                  Search
+                </button>
               </div>
             </div>
           </div>
@@ -83,17 +105,19 @@ const  searchWeather=()=>{
                 <div className="row">
                   <div className="col p-0 windspeed1">
                     {" "}
-                    {data.feels_like} ºC
+                    {data?.feelslike_c} ºC
                   </div>
                   <div className="col p-0 windspeed1 ">
                     {" "}
-                    {data.wind_speed} km/h
+                    {data?.wind_kph
+} km/h
                   </div>
                 </div>
                 <div className="row mt-4 ">
                   <div className="col  currentTemp ">
                     {" "}
-                    {data.temp}
+                    {data?.temp_c
+}
                     <WiCelsius
                       style={{ textShadow: "text-shadow:2px 2px 4px #000000" }}
                     />
@@ -104,12 +128,16 @@ const  searchWeather=()=>{
                   <div className="col p-0  windspeed">Current</div>
                 </div>
                 <div className="row">
-                  <div className="col p-0 windspeed ">Max </div>
-                  <div className="col p-0 windspeed">Min </div>
+                  <div className="col p-0 windspeed ">Humidity
+ </div>
+                  <div className="col p-0 windspeed">cloud
+ </div>
                 </div>
                 <div className="row">
-                  <div className="col p-0  "> {data.max_temp} ºC</div>
-                  <div className="col p-0  "> {data.min_temp} ºC</div>
+                  <div className="col p-0  "> {data?.humidity
+} </div>
+                  <div className="col p-0  "> {data?.cloud
+} </div>
                 </div>
               </div>
             </div>

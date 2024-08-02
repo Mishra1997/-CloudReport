@@ -41,9 +41,7 @@ export default function Home(props) {
   // const [data, dsaf] = useState("Patna");
 
 
-  // useEffect(()=> {
-  //   searchWeather()
-  // });
+
 
 
 
